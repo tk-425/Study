@@ -29,10 +29,10 @@ public class AppTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigorous Test :-)
      */
     public void testApp()
     {
-        assertTrue( true );
+        System.out.println("Test App");
     }
 }
