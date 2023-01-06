@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent Module -->
+
+    <groupId>com.mavendemo</groupId>
+    <artifactId>n17-multi-module-project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--
+        By setting the packaging to pom type,
+        we're declaring that the project will serve as a parent
+        or an aggregator; it won't produce further artifacts.
+    -->
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- Maven will look for directory called "jpa-entity" -->
+        <module>jpa-entities</module>
+    </modules>
+</project>
