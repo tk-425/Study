@@ -27,5 +27,8 @@
     <modules>
         <!-- Maven will look for directory called "jpa-entity" -->
         <module>jpa-entities</module>
+        <module>from-intellij</module>
+        <module>web-api</module>
+        <module>web-app</module>
     </modules>
 </project>
