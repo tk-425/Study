@@ -8,9 +8,10 @@
 
     <groupId>com.mavendemo</groupId>
     <artifactId>n17-multi-module-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <properties>
+        <revision>1.0-SNAPSHOT</revision>
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
