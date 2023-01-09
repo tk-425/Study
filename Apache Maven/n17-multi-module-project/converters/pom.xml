@@ -11,9 +11,9 @@
 
     <artifactId>converters</artifactId>
 
-    <properties>
-        <mapstruct.version>1.5.3.Final</mapstruct.version>
-    </properties>
+<!--    <properties>-->
+<!--        <mapstruct.version>1.5.3.Final</mapstruct.version>-->
+<!--    </properties>-->
 
     <dependencies>
         <!-- Adding two modules for converters -->
@@ -31,7 +31,6 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
         </dependency>
     </dependencies>
 

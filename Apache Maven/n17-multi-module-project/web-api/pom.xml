@@ -12,25 +12,22 @@
     <artifactId>web-api</artifactId>
 
     <!-- child pom inherits all the properties from the parent pom -->
-    <properties>
-        <jaxb.version>4.0.1</jaxb.version>
-    </properties>
+<!--    <properties>-->
+<!--        <jaxb.version>4.0.1</jaxb.version>-->
+<!--    </properties>-->
 
     <dependencies>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.4.0-b180830.0359</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-core</artifactId>
-            <version>${jaxb.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb.version}</version>
         </dependency>
     </dependencies>
 
