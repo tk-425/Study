@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mavendemo</groupId>
@@ -58,11 +59,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M7</version>
-                <configuration>
-                    <tagNameFormat>v@{project.version}</tagNameFormat>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <releaseProfiles>nexus_distro</releaseProfiles>
-                </configuration>
+                <!-- Commented out for PackageCloud -->
+                <!--                <configuration>-->
+                <!--                    <tagNameFormat>v@{project.version}</tagNameFormat>-->
+                <!--                    <autoVersionSubmodules>true</autoVersionSubmodules>-->
+                <!--                    <releaseProfiles>nexus_distro</releaseProfiles>-->
+                <!--                </configuration>-->
             </plugin>
 
             <!-- Deploy Plugin -->
@@ -92,23 +94,24 @@
             </distributionManagement>
         </profile>
 
+        <!-- Commented out for PackageCloud -->
         <!-- Nexus Profile -->
-        <profile>
-            <id>nexus_distro</id>
-            <distributionManagement>
-                <!-- Nexus -->
-                <!-- Snapshot repository -->
-                <snapshotRepository>
-                    <id>nexus-snapshot</id>
-                    <url>http://localhost:8081/repository/nexus-snapshot/</url>
-                </snapshotRepository>
-                <!-- Release Repository -->
-                <repository>
-                    <id>nexus-release</id>
-                    <url>http://localhost:8081/repository/nexus-release/</url>
-                </repository>
-            </distributionManagement>
-        </profile>
+        <!--        <profile>-->
+        <!--            <id>nexus_distro</id>-->
+        <!--            <distributionManagement>-->
+        <!--                &lt;!&ndash; Nexus &ndash;&gt;-->
+        <!--                &lt;!&ndash; Snapshot repository &ndash;&gt;-->
+        <!--                <snapshotRepository>-->
+        <!--                    <id>nexus-snapshot</id>-->
+        <!--                    <url>http://localhost:8081/repository/nexus-snapshot/</url>-->
+        <!--                </snapshotRepository>-->
+        <!--                &lt;!&ndash; Release Repository &ndash;&gt;-->
+        <!--                <repository>-->
+        <!--                    <id>nexus-release</id>-->
+        <!--                    <url>http://localhost:8081/repository/nexus-release/</url>-->
+        <!--                </repository>-->
+        <!--            </distributionManagement>-->
+        <!--        </profile>-->
 
         <!-- Test Profile -->
         <profile>
