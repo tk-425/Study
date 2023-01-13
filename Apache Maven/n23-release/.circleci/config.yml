@@ -18,8 +18,8 @@ jobs:
     steps:
       # Adding SSH-Key
       - add_ssh_keys:
-          fingerprints:
-            - "69:5a:65:ef:22:8c:52:a8:3e:53:cb:59:52:ca:0d:c0"
+            fingerprints:
+              - "69:5a:65:ef:22:8c:52:a8:3e:53:cb:59:52:ca:0d:c0"
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
@@ -31,9 +31,9 @@ jobs:
           name: Test
           command: mvn test
       # Deploy to PackageCloud and read settings from circleci directory
-      #      - run:
-      #          name: Deploy
-      #          command: mvn deploy -s .circleci/settings.xml -Ppackagecloud
+#      - run:
+#          name: Deploy
+#          command: mvn deploy -s .circleci/settings.xml -Ppackagecloud
       # Release PackageCloud
       - run: git config user.email "wtk4949@gmail.com"
       - run: git config user.name "via CircleCI Build"
@@ -48,3 +48,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+
