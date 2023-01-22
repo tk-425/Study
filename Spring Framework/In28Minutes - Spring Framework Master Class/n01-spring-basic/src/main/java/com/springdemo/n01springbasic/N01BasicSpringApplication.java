@@ -34,25 +34,24 @@ public class N01BasicSpringApplication {
 //		System.out.println("BinarySearch 2: " + binarySearch2);
 
 		/* without Spring Boot Starter Package */
-		AnnotationConfigApplicationContext appContext =
-						new AnnotationConfigApplicationContext(N01BasicSpringApplication.class);
+		try (AnnotationConfigApplicationContext appContext =
+						new AnnotationConfigApplicationContext(N01BasicSpringApplication.class)) {
 
-		BinarySearch binarySearch1 =
-						appContext.getBean(BinarySearch.class);
+			BinarySearch binarySearch1 =
+							appContext.getBean(BinarySearch.class);
 
-		BinarySearch binarySearch2 =
-						appContext.getBean(BinarySearch.class);
+			BinarySearch binarySearch2 =
+							appContext.getBean(BinarySearch.class);
 
-		int result1 = binarySearch1.binarySearch(new int[] {12, 2, 5}, 5);
-		System.out.println("Result 1: " + result1);
+			int result1 = binarySearch1.binarySearch(new int[]{12, 2, 5}, 5);
+			System.out.println("Result 1: " + result1);
 
-		int result2 = binarySearch2.binarySearch(new int[] {12, 2, 5}, 5);
-		System.out.println("Result 2: " + result2);
+			int result2 = binarySearch2.binarySearch(new int[]{12, 2, 5}, 5);
+			System.out.println("Result 2: " + result2);
 
-		System.out.println("BinarySearch 1: " + binarySearch1);
-		System.out.println("BinarySearch 2: " + binarySearch2);
-
-		appContext.close();
+			System.out.println("BinarySearch 1: " + binarySearch1);
+			System.out.println("BinarySearch 2: " + binarySearch2);
+		}
 	}
 
 }

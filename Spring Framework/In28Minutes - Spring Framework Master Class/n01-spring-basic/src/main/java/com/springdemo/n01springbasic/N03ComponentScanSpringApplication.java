@@ -19,20 +19,19 @@ public class N03ComponentScanSpringApplication {
   private static final Logger LOGGER = LoggerFactory.getLogger(N03ComponentScanSpringApplication.class);
   public static void main(String[] args) {
     // Application Context
-    AnnotationConfigApplicationContext appContext =
-            new AnnotationConfigApplicationContext(N03ComponentScanSpringApplication.class);
+   try (AnnotationConfigApplicationContext appContext =
+                 new AnnotationConfigApplicationContext(N03ComponentScanSpringApplication.class)) {
 
-    ComponentDAO componentDAO =
-            appContext.getBean(ComponentDAO.class);
+     ComponentDAO componentDAO =
+             appContext.getBean(ComponentDAO.class);
 
-    LOGGER.info("componentDAO {}", componentDAO);
-    LOGGER.info("componentDAO {}", componentDAO.getComponentJdbcConnection());
+     LOGGER.info("componentDAO {}", componentDAO);
+     LOGGER.info("componentDAO {}", componentDAO.getComponentJdbcConnection());
 
-    PersonDAO personDAO = appContext.getBean(PersonDAO.class);
+     PersonDAO personDAO = appContext.getBean(PersonDAO.class);
 
-    LOGGER.info("personDAO {}", personDAO);
-    LOGGER.info("personDAO {}", personDAO.getJdbcConnection());
-
-    appContext.close();
+     LOGGER.info("personDAO {}", personDAO);
+     LOGGER.info("personDAO {}", personDAO.getJdbcConnection());
+   }
   }
 }
