@@ -18,19 +18,20 @@ public class N02ScopeSpringApplication {
   private static final Logger LOGGER = LoggerFactory.getLogger(N02ScopeSpringApplication.class);
   public static void main(String[] args) {
     // Application Context
-    ApplicationContext appContext =
-            new AnnotationConfigApplicationContext(N02ScopeSpringApplication.class);
+    try (AnnotationConfigApplicationContext appContext =
+                 new AnnotationConfigApplicationContext(N02ScopeSpringApplication.class)) {
 
-    PersonDAO personDAO1 =
-            appContext.getBean(PersonDAO.class);
+      PersonDAO personDAO1 =
+              appContext.getBean(PersonDAO.class);
 
-    PersonDAO personDAO2 =
-            appContext.getBean(PersonDAO.class);
+      PersonDAO personDAO2 =
+              appContext.getBean(PersonDAO.class);
 
-    LOGGER.info("personDAO1 {}", personDAO1);
-    LOGGER.info("personDAO1 {}", personDAO1.getJdbcConnection());
+      LOGGER.info("personDAO1 {}", personDAO1);
+      LOGGER.info("personDAO1 {}", personDAO1.getJdbcConnection());
 
-    LOGGER.info("personDAO2 {}", personDAO2);
-    LOGGER.info("personDAO2 {}", personDAO2.getJdbcConnection());
+      LOGGER.info("personDAO2 {}", personDAO2);
+      LOGGER.info("personDAO2 {}", personDAO2.getJdbcConnection());
+    }
   }
 }
