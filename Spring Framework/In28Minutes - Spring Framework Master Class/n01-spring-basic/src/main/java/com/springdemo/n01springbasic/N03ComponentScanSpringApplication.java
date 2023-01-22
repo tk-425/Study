@@ -19,7 +19,7 @@ public class N03ComponentScanSpringApplication {
   private static final Logger LOGGER = LoggerFactory.getLogger(N03ComponentScanSpringApplication.class);
   public static void main(String[] args) {
     // Application Context
-    ApplicationContext appContext =
+    AnnotationConfigApplicationContext appContext =
             new AnnotationConfigApplicationContext(N03ComponentScanSpringApplication.class);
 
     ComponentDAO componentDAO =
@@ -32,5 +32,7 @@ public class N03ComponentScanSpringApplication {
 
     LOGGER.info("personDAO {}", personDAO);
     LOGGER.info("personDAO {}", personDAO.getJdbcConnection());
+
+    appContext.close();
   }
 }

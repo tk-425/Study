@@ -34,7 +34,7 @@ public class N01BasicSpringApplication {
 //		System.out.println("BinarySearch 2: " + binarySearch2);
 
 		/* without Spring Boot Starter Package */
-		ApplicationContext appContext =
+		AnnotationConfigApplicationContext appContext =
 						new AnnotationConfigApplicationContext(N01BasicSpringApplication.class);
 
 		BinarySearch binarySearch1 =
@@ -51,6 +51,8 @@ public class N01BasicSpringApplication {
 
 		System.out.println("BinarySearch 1: " + binarySearch1);
 		System.out.println("BinarySearch 2: " + binarySearch2);
+
+		appContext.close();
 	}
 
 }

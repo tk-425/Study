@@ -18,7 +18,7 @@ public class N02ScopeSpringApplication {
   private static final Logger LOGGER = LoggerFactory.getLogger(N02ScopeSpringApplication.class);
   public static void main(String[] args) {
     // Application Context
-    ApplicationContext appContext =
+    AnnotationConfigApplicationContext appContext =
             new AnnotationConfigApplicationContext(N02ScopeSpringApplication.class);
 
     PersonDAO personDAO1 =
@@ -32,5 +32,7 @@ public class N02ScopeSpringApplication {
 
     LOGGER.info("personDAO2 {}", personDAO2);
     LOGGER.info("personDAO2 {}", personDAO2.getJdbcConnection());
+
+    appContext.close();
   }
 }
