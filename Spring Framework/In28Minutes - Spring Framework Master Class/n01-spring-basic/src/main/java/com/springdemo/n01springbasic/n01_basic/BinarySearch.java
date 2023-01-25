@@ -25,12 +25,32 @@ public class BinarySearch {
   }
 
   public int binarySearch(int[] arr, int n) {
+    if (arr.length == 0) {
+      return Integer.MIN_VALUE;
+    }
+
     int[] sortedArray = sortAlgorithm.sort(arr);
 
-    // binary search algorithm goes here...
+    int start = 0, end = sortedArray.length - 1;
 
-    // we'll just return 0 for now
-    return 0;
+    while (end - start > 1) {
+      int mid = (start + end) / 2;
+      if (sortedArray[mid] < n) {
+        start = mid + 1;
+      } else {
+        end = mid;
+      }
+    }
+
+    if (sortedArray[start] == n) {
+      return start;
+    } else if (sortedArray[end] == n) {
+      return end;
+    }
+
+    System.out.println("Not Found - Returning Integer.MIN_VALUE");
+
+    return Integer.MIN_VALUE;
   }
 
   @PostConstruct
