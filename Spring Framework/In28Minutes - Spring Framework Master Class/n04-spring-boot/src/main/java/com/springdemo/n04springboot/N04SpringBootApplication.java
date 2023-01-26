@@ -9,5 +9,4 @@ public class N04SpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(N04SpringBootApplication.class, args);
 	}
-
 }
