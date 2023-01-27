@@ -46,7 +46,7 @@ public class N08DatabaseApplication implements CommandLineRunner {
 		logger.info("All Users -> {}", personJdbcDAO.findAll());
 		logger.info("Update ID 1011's Information -> {}",
 						personJdbcDAO.update(new Person(1011, "Joy", "WA", convertStringToDate("1999-09-09"))));
-		logger.info("All Users -> {}", personJdbcDAO.findAll());
+		logger.info("All Users using PersonRowMapper -> {}", personJdbcDAO.findAllPersonRowMapper());
 	}
 
 	private Date convertStringToDate(String date) throws ParseException {

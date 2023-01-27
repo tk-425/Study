@@ -4,16 +4,15 @@ import com.springdemo.n08database.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
 public class PersonJdbcDAO {
-
-  // database connection
-  JdbcTemplate jdbcTemplate;
-
   private final String FIND_ALL = "select * from person";
   private final String FIND_BY_ID = "select * from person where id=?";
   private final String FIND_BY_NAME = "select * from person where name=?";
@@ -22,17 +21,39 @@ public class PersonJdbcDAO {
   private final String INSERT = "insert into person (id, name, location, birth_date) values (?,  ?, ?, ?)";
   private final String UPDATE = "update person set name=?, location=?, birth_date = ? where id=?";
 
-
+  // database connection
+  JdbcTemplate jdbcTemplate;
 
   @Autowired
   public PersonJdbcDAO(JdbcTemplate jdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;
   }
 
+  // Custom Person RowMapper inner class
+  static class PersonRowMapper implements RowMapper<Person> {
+
+    @Override
+    public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
+      Person person = new Person();
+
+      person.setId(rs.getInt("id"));
+      person.setName(rs.getString("name"));
+      person.setLocation(rs.getString("location"));
+      person.setBirthDate(rs.getDate("birth_date"));
+
+      return person;
+    }
+  }
+
   // select * from person
   public List<Person> findAll() {
     return jdbcTemplate.query(FIND_ALL,
             new BeanPropertyRowMapper<>(Person.class));
+  }
+
+  public List<Person> findAllPersonRowMapper() {
+    return jdbcTemplate.query(FIND_ALL,
+            new PersonRowMapper());
   }
 
   public Person findById(int id) {
