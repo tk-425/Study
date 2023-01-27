@@ -19,6 +19,6 @@ public class BusinessOne {
   }
 
   public String doSomething() {
-    return "Business Two Doing Something";
+    return "Business One Doing Something";
   }
 }

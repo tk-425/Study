@@ -1,5 +1,6 @@
 package com.springdemo.n05springaop.business;
 
+import com.springdemo.n05springaop.aspect.TrackTime;
 import com.springdemo.n05springaop.data.DAOTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,11 @@ public class BusinessTwo {
     this.daoTwo = daoTwo;
   }
 
+  @TrackTime
   public String calculateSomething() {
     return daoTwo.retrieveSomething();
   }
+
   public String doSomething() {
     return "Business Two Doing Something";
   }
