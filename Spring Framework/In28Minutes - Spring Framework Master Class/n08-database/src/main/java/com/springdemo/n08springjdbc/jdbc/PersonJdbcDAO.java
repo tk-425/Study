@@ -1,6 +1,6 @@
-package com.springdemo.n08database.jdbc;
+package com.springdemo.n08springjdbc.jdbc;
 
-import com.springdemo.n08database.entity.Person;
+import com.springdemo.n08springjdbc.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,7 +22,7 @@ public class PersonJdbcDAO {
   private final String UPDATE = "update person set name=?, location=?, birth_date = ? where id=?";
 
   // database connection
-  JdbcTemplate jdbcTemplate;
+  private final JdbcTemplate jdbcTemplate;
 
   @Autowired
   public PersonJdbcDAO(JdbcTemplate jdbcTemplate) {
