@@ -1,7 +1,6 @@
-package com.springdemo.n08database.entity;
+package com.springdemo.n08springjdbc.entity;
 
 import java.util.Date;
-import java.time.LocalDate;
 
 public class Person {
 
@@ -11,6 +10,12 @@ public class Person {
   private Date birthDate;
 
   public Person() {}
+
+  public Person(String name, String location, Date birthDate) {
+    this.name = name;
+    this.location = location;
+    this.birthDate = birthDate;
+  }
 
   public Person(int id, String name, String location, Date birthDate) {
     this.id = id;

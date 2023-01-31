@@ -1,7 +1,7 @@
-package com.springdemo.n08database;
+package com.springdemo.n08springjdbc;
 
-import com.springdemo.n08database.entity.Person;
-import com.springdemo.n08database.jdbc.PersonJdbcDAO;
+import com.springdemo.n08springjdbc.entity.Person;
+import com.springdemo.n08springjdbc.jdbc.PersonJdbcDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +14,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SpringBootApplication
-public class N08DatabaseApplication implements CommandLineRunner {
+public class N08SpringJdbcApplication implements CommandLineRunner {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	private PersonJdbcDAO personJdbcDAO;
+	private final PersonJdbcDAO personJdbcDAO;
 
 	@Autowired
-	public N08DatabaseApplication(PersonJdbcDAO personJdbcDAO) {
+	public N08SpringJdbcApplication(PersonJdbcDAO personJdbcDAO) {
 		this.personJdbcDAO = personJdbcDAO;
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(N08DatabaseApplication.class, args);
+		SpringApplication.run(N08SpringJdbcApplication.class, args);
 	}
 
 	@Override
