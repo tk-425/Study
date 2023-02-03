@@ -1,10 +1,10 @@
-package com.springdemo.n09springdatajpa;
+package com.springdemo.springdatajpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class N09SpringDataJpaApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
