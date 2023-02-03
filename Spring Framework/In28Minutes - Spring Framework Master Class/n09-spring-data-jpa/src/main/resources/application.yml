@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: ALL
+  datasource:
+    url: jdbc:mysql://localhost:3306/schooldb
+    username: demo
+    password: Admin1234$
+    driver-class-name: com.mysql.cj.jdbc.Driver
