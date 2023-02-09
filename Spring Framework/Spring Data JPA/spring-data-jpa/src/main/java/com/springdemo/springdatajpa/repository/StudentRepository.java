@@ -1,5 +1,6 @@
-package com.springdemo.springdatajpa;
+package com.springdemo.springdatajpa.repository;
 
+import com.springdemo.springdatajpa.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +36,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
   @Modifying
   @Query("DELETE FROM Student s WHERE s.id = :id")
   int deleteStudentById(@Param("id") Long id);
+
+  @Query("SELECT s from Student s JOIN FETCH s.books WHERE s.id = :id")
+  Student findByIdAndJoinBookColumn(@Param("id") Long id);
 
 }
