@@ -13,46 +13,49 @@ public class Course {
 
   @Id
   @SequenceGenerator(
-          name = "course_sequence",
-          sequenceName = "course_sequence",
-          allocationSize = 1
+      name = "course_sequence",
+      sequenceName = "course_sequence",
+      allocationSize = 1
   )
   @GeneratedValue(
-          strategy = SEQUENCE,
-          generator = "course_sequence"
+      strategy = SEQUENCE,
+      generator = "course_sequence"
   )
   @Column(
-          name = "id",
-          updatable = false
+      name = "id",
+      updatable = false
   )
   private Long id;
 
   @Column(
-          name = "name",
-          nullable = false,
-          columnDefinition = "TEXT"
+      name = "name",
+      nullable = false,
+      columnDefinition = "TEXT"
   )
   private String name;
 
   @Column(
-          name = "department",
-          nullable = false,
-          columnDefinition = "TEXT"
+      name = "department",
+      nullable = false,
+      columnDefinition = "TEXT"
   )
   private String department;
 
-  @ManyToMany(
-          mappedBy = "courses"
+  @OneToMany(
+      cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+      mappedBy = "course"
   )
-  private List<Student> students = new ArrayList<>();
+  private List<Enrollment> enrollments = new ArrayList<>();
 
-  public Course() {}
+  public Course() {
+  }
 
   public Course(String name, String department) {
     this.name = name;
     this.department = department;
   }
 
+  /* Getters & Setters */
   public String getName() {
     return name;
   }
@@ -69,20 +72,30 @@ public class Course {
     this.department = department;
   }
 
-  public List<Student> getStudents() {
-    return students;
+  public List<Enrollment> getEnrollments() {
+    return enrollments;
   }
 
-  public void setStudents(List<Student> students) {
-    this.students = students;
+  public void setEnrollments(List<Enrollment> enrollments) {
+    this.enrollments = enrollments;
+  }
+
+  public void addEnrollment(Enrollment enrollment) {
+    if (!enrollments.contains(enrollment)) {
+      enrollments.add(enrollment);
+    }
+  }
+
+  public void removeEnrollment(Enrollment enrollment) {
+    enrollments.remove(enrollment);
   }
 
   @Override
   public String toString() {
     return "Course{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", department='" + department + '\'' +
-            '}';
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", department='" + department + '\'' +
+        '}';
   }
 }

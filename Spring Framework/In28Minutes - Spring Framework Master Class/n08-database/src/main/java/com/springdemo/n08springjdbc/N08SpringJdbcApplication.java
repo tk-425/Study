@@ -31,7 +31,10 @@ public class N08SpringJdbcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// fire query
+		jdbcQuery();
+	}
+
+	private void jdbcQuery() throws ParseException {
 		logger.info("All Users -> {}", personJdbcDAO.findAll());
 		logger.info("User ID 1004 -> {}", personJdbcDAO.findById(1004));
 		logger.info("User Name James -> {}", personJdbcDAO.findByName("James"));
@@ -40,12 +43,15 @@ public class N08SpringJdbcApplication implements CommandLineRunner {
 		logger.info("Number of Row Deleted -> {}", personJdbcDAO.deleteById(1006));
 		logger.info("All Users -> {}", personJdbcDAO.findAll());
 		logger.info("Insert New User -> {}",
-						personJdbcDAO.insert(new Person(1010, "Jake", "MD", convertStringToDate("1982-05-05"))));
+				personJdbcDAO.insert(new Person(1010, "Jake", "MD",
+						convertStringToDate("1982-05-05"))));
 		logger.info("Insert New User -> {}",
-						personJdbcDAO.insert(new Person(1011, "Kris", "WA", convertStringToDate("1988-09-23"))));
+				personJdbcDAO.insert(new Person(1011, "Kris", "WA",
+						convertStringToDate("1988-09-23"))));
 		logger.info("All Users -> {}", personJdbcDAO.findAll());
 		logger.info("Update ID 1011's Information -> {}",
-						personJdbcDAO.update(new Person(1011, "Joy", "WA", convertStringToDate("1999-09-09"))));
+				personJdbcDAO.update(new Person(1011, "Joy", "WA",
+						convertStringToDate("1999-09-09"))));
 		logger.info("All Users using PersonRowMapper -> {}", personJdbcDAO.findAllPersonRowMapper());
 	}
 

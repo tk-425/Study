@@ -23,6 +23,7 @@ public class EnrollmentId implements Serializable {
     this.courseId = courseId;
   }
 
+  /* Getters & Setters */
   public Long getStudentId() {
     return studentId;
   }
