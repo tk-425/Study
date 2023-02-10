@@ -1,8 +1,18 @@
 package tacos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class IngredientRef {
   private final String ingredient;
+
+  @Override
+  public String toString() {
+    return "IngredientRef{" +
+        "ingredient='" + ingredient + '\'' +
+        '}';
+  }
 }

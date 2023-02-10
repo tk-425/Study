@@ -2,12 +2,15 @@ package tacos;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Taco {
 
   private Long id;
@@ -20,4 +23,14 @@ public class Taco {
   @NotNull
   @Size(min = 1, message = "You must choose at least 1 ingredient")
   private List<Ingredient> ingredients;
+
+  @Override
+  public String toString() {
+    return "Taco{" +
+        "id=" + id +
+        ", createdAt=" + createdAt +
+        ", name='" + name + '\'' +
+        ", ingredients=" + ingredients +
+        '}';
+  }
 }

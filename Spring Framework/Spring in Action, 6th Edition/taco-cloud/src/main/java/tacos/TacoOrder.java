@@ -3,7 +3,7 @@ package tacos;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import java.io.Serializable;
@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TacoOrder implements Serializable {
 
   private static final long serializableUID = 1L;
@@ -47,5 +50,22 @@ public class TacoOrder implements Serializable {
 
   public void addTaco(Taco taco) {
     this.tacos.add(taco);
+  }
+
+  @Override
+  public String toString() {
+    return "TacoOrder{" +
+        "id=" + id +
+        ", placedAt=" + placedAt +
+        ", deliveryName='" + deliveryName + '\'' +
+        ", deliveryStreet='" + deliveryStreet + '\'' +
+        ", deliveryCity='" + deliveryCity + '\'' +
+        ", deliveryState='" + deliveryState + '\'' +
+        ", deliveryZip='" + deliveryZip + '\'' +
+        ", ccNumber='" + ccNumber + '\'' +
+        ", ccExpiration='" + ccExpiration + '\'' +
+        ", ccCVV='" + ccCVV + '\'' +
+        ", tacos=" + tacos +
+        '}';
   }
 }

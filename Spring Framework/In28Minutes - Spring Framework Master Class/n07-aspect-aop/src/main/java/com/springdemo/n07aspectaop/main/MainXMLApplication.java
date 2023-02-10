@@ -10,8 +10,8 @@ public class MainXMLApplication {
 		BusinessObject businessObject = (BusinessObject) applicationContext.getBean("bo");
 
 		try {
-			businessObject.validate();
-			businessObject.validate(17);
+			businessObject.validateAge();
+			businessObject.validateAge(17);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

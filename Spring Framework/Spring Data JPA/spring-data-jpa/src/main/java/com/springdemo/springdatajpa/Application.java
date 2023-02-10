@@ -29,23 +29,19 @@ public class Application {
           "Tiger",
           "Woods",
           "tk@mail.com",
-          28
-      );
+          28);
 
       Book cleanCode = new Book(
           "Clean Code",
-          LocalDateTime.now().minusDays(4)
-      );
+          LocalDateTime.now().minusDays(4));
 
       Book javaCookbook = new Book(
           "Java Cookbook",
-          LocalDateTime.now().minusDays(5)
-      );
+          LocalDateTime.now().minusDays(5));
 
       Book springDataJPA = new Book(
           "Spring Data JPA",
-          LocalDateTime.now().minusDays(10)
-      );
+          LocalDateTime.now().minusDays(10));
 
       // add books to student
       student.addBook(cleanCode);
@@ -54,8 +50,7 @@ public class Application {
 
       StudentIdCard studentIdCard = new StudentIdCard(
           "tw0011",
-          student
-      );
+          student);
 
       // set student id card to the student
       student.setStudentIdCard(studentIdCard);
@@ -64,13 +59,12 @@ public class Application {
       student.addEnrollment(new Enrollment(
           new EnrollmentId(student.getId(), 1L),
           student,
-          new Course("CS101", "IT")
-      ));
+          new Course("CS101", "IT")));
+
       student.addEnrollment(new Enrollment(
           new EnrollmentId(student.getId(), 2L),
           student,
-          new Course("STAT400", "MATH")
-      ));
+          new Course("STAT400", "MATH")));
 
       // save enrollment to the student
       studentRepository.save(student);
@@ -79,8 +73,7 @@ public class Application {
       List<Student> allStudents = studentRepository.findAll();
       allStudents.forEach(s -> {
         System.out.println("--- Name: " + s.getFirstName());
-        System.out.println("--- Courses: " + s.getEnrollments());
-      });
+        System.out.println("--- Courses: " + s.getEnrollments());});
 
       /* Getting Books */
       // option 1 - fetch type = LAZY
@@ -100,10 +93,8 @@ public class Application {
       // get the list of books from the fetched student object
       List<Book> studentBooks = studentId1L.getBooks();
       studentBooks.forEach(book -> {
-        System.out.println(studentId1L.getFirstName() + " borrowed " + book.getBookName());
-      });
-
-
+        System.out.println(studentId1L.getFirstName() +
+            " borrowed " + book.getBookName());});
     };
   }
 
@@ -118,8 +109,7 @@ public class Application {
           firstName,
           lastName,
           email,
-          faker.number().numberBetween(18, 58)
-      );
+          faker.number().numberBetween(18, 58));
 
       studentRepository.save(student);
     }

@@ -1,8 +1,11 @@
 package tacos;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ingredient {
 
   private final String id;
@@ -11,5 +14,14 @@ public class Ingredient {
 
   public enum Type {
     WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
+  }
+
+  @Override
+  public String toString() {
+    return "Ingredient{" +
+        "id='" + id + '\'' +
+        ", name='" + name + '\'' +
+        ", type=" + type +
+        '}';
   }
 }

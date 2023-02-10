@@ -23,8 +23,9 @@ public class MainSpringApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     try {
-      business.validate();
-      business.validate(17);
+      business.validateAge();
+      business.validateAge(19);
+      business.validateByBirthYear(2005);
     } catch (Exception e) {
       System.out.println(e);
     }
