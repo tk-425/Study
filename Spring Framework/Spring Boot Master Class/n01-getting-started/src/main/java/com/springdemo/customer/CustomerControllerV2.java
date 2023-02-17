@@ -1,5 +1,6 @@
 package com.springdemo.customer;
 
+import com.springdemo.exception.ApiRequestException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,15 @@ public class CustomerControllerV2 {
   Customer getCustomer(@PathVariable("customerId") Long id) {
     System.out.println("GET REQUEST FOR CUSTOMER WITH ID " + id);
     return customerService.getCustomer(id);
+  }
+
+  // method for throwing custom exceptions
+  @GetMapping(path = "{customerId}/exception")
+  Customer getCustomerException(@PathVariable("customerId") Long id) {
+    System.out.println("THROWING CUSTOM EXCEPTION...");
+    throw new ApiRequestException(
+        "ApiRequestException for customer " + id, null, false, false
+    );
   }
 
   @PostMapping
