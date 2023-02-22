@@ -1,5 +1,6 @@
 package com.springdemo.customer;
 
+import com.springdemo.infoapp.InfoApp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -11,10 +12,15 @@ public class CustomerConfiguration {
   @Value("${app.useFakeCustomerRepo:true}")
   private Boolean useFakeCustomerRepo;
 
+  @Value("${info.company.name}")
+  private String companyName;
+
   @Bean
-  CommandLineRunner commandLineRunner() {
+  CommandLineRunner commandLineRunner(InfoApp infoApp) {
     return args -> {
       System.out.println("CommandLineRunner - Running");
+      System.out.println("Company Name: " + companyName);
+      System.out.println(infoApp);
     };
   }
 

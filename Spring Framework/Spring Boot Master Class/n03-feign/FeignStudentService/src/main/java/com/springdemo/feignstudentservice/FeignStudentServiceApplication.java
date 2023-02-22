@@ -1,15 +1,15 @@
-package com.springdemo;
+package com.springdemo.feignstudentservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableFeignClients
-public class Application {
+public class FeignStudentServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(FeignStudentServiceApplication.class, args);
+  }
+
 }
