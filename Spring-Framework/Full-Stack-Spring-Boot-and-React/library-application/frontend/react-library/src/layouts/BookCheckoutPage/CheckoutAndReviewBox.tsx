@@ -6,9 +6,41 @@ type Props = {
   book: BookModel | undefined;
   mobile: boolean;
   currentLoansCount: number;
+  isAuthenticated: any;
+  isCheckedOut: boolean;
+  checkoutBook: any;
 };
 
 export const CheckoutAndReviewBox = (props: Props) => {
+  function buttonRender() {
+    if (props.isAuthenticated) {
+      if (!props.isCheckedOut && props.currentLoansCount < 5) {
+        return (
+          <button
+            className='btn btn-success btn-lg'
+            onClick={() => props.checkoutBook()}
+          >
+            Checkout
+          </button>
+        );
+      } else if (props.isCheckedOut) {
+        return (
+          <p>
+            <b>Book checked out. Enjoy!</b>
+          </p>
+        );
+      }
+    }
+    return (
+      <Link
+        to={'/login'}
+        className='btn btn-success btn-lg'
+      >
+        Sign in
+      </Link>
+    );
+  }
+
   return (
     <div
       className={
@@ -37,12 +69,7 @@ export const CheckoutAndReviewBox = (props: Props) => {
             </p>
           </div>
         </div>
-        <Link
-          className='btn btn-success btn-lg'
-          to='/#'
-        >
-          Sign in
-        </Link>
+        {buttonRender()}
         <hr />
         <p className='mt-3'>
           This number can change until placing order has been complete.
