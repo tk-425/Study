@@ -8,8 +8,9 @@ import { Navbar } from './layouts/NavbarAndFooter/Navbar';
 import { SearchBooksPage } from './layouts/SearchBooksPage/SearchBooksPage';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { oktaConfig } from './lib/oktaConfig';
-import { Security, LoginCallback } from '@okta/okta-react';
+import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import LoginWidget from './auth/LoginWidget';
+import { ShelfPage } from './layouts/ShelfPage/ShelfPage';
 
 const oktaAuth = new OktaAuth(oktaConfig.oidc);
 
@@ -57,6 +58,9 @@ export const App = () => {
               path='/login/callback'
               component={LoginCallback}
             />
+            <SecureRoute path={'/shelf'}>
+              <ShelfPage />
+            </SecureRoute>
           </Switch>
         </div>
         <Footer />

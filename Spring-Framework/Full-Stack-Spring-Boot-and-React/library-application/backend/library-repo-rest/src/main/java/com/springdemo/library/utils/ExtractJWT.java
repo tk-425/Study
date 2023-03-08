@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ExtractJWT {
 
+  //  extract user email
   public static String payloadJWTExtraction(String token, String extraction) {
     token = token.replace("Bearer ", "");
 

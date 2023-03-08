@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BookModel from '../../models/BookModel';
+import { LeaveAReview } from '../Utils/LeaveAReview';
 
 type Props = {
   book: BookModel | undefined;
@@ -9,6 +10,8 @@ type Props = {
   isAuthenticated: any;
   isCheckedOut: boolean;
   checkoutBook: any;
+  isReviewLeft: boolean;
+  submitReview: any;
 };
 
 export const CheckoutAndReviewBox = (props: Props) => {
@@ -29,6 +32,8 @@ export const CheckoutAndReviewBox = (props: Props) => {
             <b>Book checked out. Enjoy!</b>
           </p>
         );
+      } else if (!props.isCheckedOut) {
+        return <p className='text-danger'>Too many books checked out.</p>;
       }
     }
     return (
@@ -38,6 +43,29 @@ export const CheckoutAndReviewBox = (props: Props) => {
       >
         Sign in
       </Link>
+    );
+  }
+
+  function reviewRender() {
+    if (props.isAuthenticated && !props.isReviewLeft) {
+      return (
+        <p>
+          <LeaveAReview submitReview={props.submitReview} />
+        </p>
+      );
+    } else if (props.isAuthenticated && props.isReviewLeft) {
+      return (
+        <p>
+          <b>Thank you for your review!</b>
+        </p>
+      );
+    }
+
+    return (
+      <div>
+        <hr />
+        <p>Sign in to be able to leave a review.</p>
+      </div>
     );
   }
 
@@ -74,7 +102,7 @@ export const CheckoutAndReviewBox = (props: Props) => {
         <p className='mt-3'>
           This number can change until placing order has been complete.
         </p>
-        <p>Sign in to be able to leave a review.</p>
+        {reviewRender()}
       </div>
     </div>
   );
