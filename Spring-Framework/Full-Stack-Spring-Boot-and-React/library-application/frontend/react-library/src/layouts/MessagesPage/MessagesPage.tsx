@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Messages } from './components/Messages';
 import { PostNewMessage } from './components/PostNewMessage';
 
 export const MessagesPage = () => {
@@ -59,7 +60,7 @@ export const MessagesPage = () => {
             role='tabpanel'
             aria-labelledby='nav-message-tab'
           >
-            {messagesClick ? <p>Messages</p> : <></>}
+            {messagesClick ? <Messages /> : <></>}
           </div>
         </div>
       </div>

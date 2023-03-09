@@ -1,6 +1,7 @@
 package com.springdemo.library.config;
 
 import com.springdemo.library.model.Book;
+import com.springdemo.library.model.Message;
 import com.springdemo.library.model.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -20,9 +21,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     // expose primary key ID
     config.exposeIdsFor(Book.class);
     config.exposeIdsFor(Review.class);
+    config.exposeIdsFor(Message.class);
 
     disableHttpMethods(Book.class, config, theUnsupportedActions);
     disableHttpMethods(Review.class, config, theUnsupportedActions);
+    disableHttpMethods(Message.class, config, theUnsupportedActions);
 
     // Configure CORS Mapping
     String theAllowedOrigins = "http://localhost:3000";

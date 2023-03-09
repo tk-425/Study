@@ -27,8 +27,6 @@ export const Loans = () => {
             'Content-Type': 'application/json',
           },
         };
-
-        console.log(authState);
         
         const shelfCurrentLoansResponse = await fetch(url, requestOptions);
                 

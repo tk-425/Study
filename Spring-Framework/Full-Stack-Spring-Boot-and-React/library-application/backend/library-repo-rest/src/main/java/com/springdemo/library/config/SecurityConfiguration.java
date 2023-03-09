@@ -17,11 +17,6 @@ public class SecurityConfiguration {
     // disable cross site request forgery
     http.csrf().disable();
 
-//    http.authorizeHttpRequests(authorize -> authorize
-//            .requestMatchers("/api/books/secure/**").authenticated())
-//        .oauth2ResourceServer()
-//        .jwt();
-
     // protect endpoints at /api/<type>/secure
     http.authorizeHttpRequests()
         .requestMatchers("/api/books/**").permitAll()
@@ -29,7 +24,7 @@ public class SecurityConfiguration {
         .requestMatchers("/api/books/secure/**").authenticated()
         .requestMatchers("/api/reviews/secure/**").authenticated()
         .requestMatchers("/api/histories/**").authenticated()
-        .requestMatchers("/api/messages/secure/**").authenticated()
+        .requestMatchers("/api/messages/**").authenticated()
         .and()
         .oauth2ResourceServer().jwt();
 
