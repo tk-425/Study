@@ -9,9 +9,9 @@ type Props = {
   currentLoansCount: number;
   isAuthenticated: any;
   isCheckedOut: boolean;
-  checkoutBook: any;
+  checkoutBook: Function;
   isReviewLeft: boolean;
-  submitReview: any;
+  submitReview: Function;
 };
 
 export const CheckoutAndReviewBox = (props: Props) => {

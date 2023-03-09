@@ -1,5 +1,5 @@
 import { useOktaAuth } from '@okta/okta-react';
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HistoryModel from '../../../models/HistoryModel';
 import { Pagination } from '../../Utils/Pagination';
@@ -14,6 +14,8 @@ export const HistoryPage = () => {
   // History
   const [histories, setHistories] = useState<HistoryModel[]>([]);
 
+  const messagesPerPage = 5;
+
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -23,7 +25,7 @@ export const HistoryPage = () => {
       if (authState && authState.isAuthenticated) {
         const url = `http://localhost:8080/api/histories/search/findBooksByUserEmail?userEmail=${
           authState.accessToken?.claims.sub
-        }&page=${currentPage - 1}&size=5`;
+        }&page=${currentPage - 1}&size=${messagesPerPage}`;
 
         const requestOptions = {
           method: 'GET',
@@ -32,7 +34,7 @@ export const HistoryPage = () => {
             'Content-Type': 'application/json',
           },
         };
-
+        
         const historyResponse = await fetch(url, requestOptions);
 
         if (!historyResponse.ok) {
@@ -42,7 +44,7 @@ export const HistoryPage = () => {
         const historyResponseJson = await historyResponse.json();
 
         setHistories(historyResponseJson._embedded.histories);
-        setTotalPages(historyResponseJson.page.totalPage);
+        setTotalPages(historyResponseJson.page.totalPages);
       }
 
       setIsLoadingHistory(false);
@@ -52,7 +54,7 @@ export const HistoryPage = () => {
       setIsLoadingHistory(false);
       setHttpError(error.message);
     });
-  }, [authState, currentPage]);
+  }, [authState, currentPage, totalPages]);
 
   if (isLoadingHistory) {
     return <SpinnerLoading />;
