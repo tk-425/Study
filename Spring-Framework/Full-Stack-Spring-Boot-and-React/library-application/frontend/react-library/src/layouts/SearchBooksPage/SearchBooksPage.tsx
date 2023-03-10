@@ -120,7 +120,7 @@ export const SearchBooksPage = () => {
     booksPerPage * currentPage <= totalAmountOfBooks
       ? booksPerPage * currentPage
       : totalAmountOfBooks;
-      
+
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
@@ -161,41 +161,19 @@ export const SearchBooksPage = () => {
                   aria-labelledby='dropdownMenuButton1'
                 >
                   <li onClick={() => categoryField('All')}>
-                    {/* <a
-                      className='dropdown-item'
-                      href='/#'
-                    > */}
                     <span className='dropdown-item'>All</span>
-                    {/* </a> */}
                   </li>
                   <li onClick={() => categoryField('FE')}>
-                    {/* <a className="dropdown-item" href="/#"> */}
                     <span className='dropdown-item'>Front-End</span>
-                    {/* </a> */}
                   </li>
                   <li onClick={() => categoryField('BE')}>
-                    {/* <a
-                      className='dropdown-item'
-                      href='/#'
-                    > */}
                     <span className='dropdown-item'>Back-End</span>
-                    {/* </a> */}
                   </li>
                   <li onClick={() => categoryField('Data')}>
-                    {/* <a
-                      className='dropdown-item'
-                      href='/#'
-                    > */}
                     <span className='dropdown-item'>Data</span>
-                    {/* </a> */}
                   </li>
                   <li onClick={() => categoryField('DevOps')}>
-                    {/* <a
-                      className='dropdown-item'
-                      href='/#'
-                    > */}
                     <span className='dropdown-item'>DevOps</span>
-                    {/* </a> */}
                   </li>
                 </ul>
               </div>

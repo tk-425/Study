@@ -3,11 +3,21 @@ import MessageModel from '../../../models/MessageModel';
 
 type Props = {
   message: MessageModel;
+  submitResponseToQuestion: Function;
 };
 
 export const AdminMessage = (props: Props) => {
   const [displayWarning, setDisplayWarning] = useState(false);
   const [response, setResponse] = useState('');
+
+  function submitButton() {
+    if (props.message !== null && response !== '') {
+      props.submitResponseToQuestion(props.message.id, response);
+      setDisplayWarning(false);
+    } else {
+      setDisplayWarning(true);
+    }
+  }
 
   return (
     <div key={props.message.id}>
@@ -43,6 +53,7 @@ export const AdminMessage = (props: Props) => {
               <button
                 className='btn btn-primary mt-3'
                 type='button'
+                onClick={submitButton}
               >
                 Submit Response
               </button>

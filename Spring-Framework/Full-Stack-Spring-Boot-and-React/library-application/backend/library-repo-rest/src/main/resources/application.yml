@@ -16,3 +16,4 @@ okta:
   oauth2:
       client-id: ${CLIENT_ID}
       issuer: https://${OKTA_ISSUER}/oauth2/default
+

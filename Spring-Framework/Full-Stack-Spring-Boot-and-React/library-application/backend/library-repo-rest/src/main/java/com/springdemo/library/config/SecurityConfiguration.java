@@ -25,6 +25,7 @@ public class SecurityConfiguration {
         .requestMatchers("/api/reviews/secure/**").authenticated()
         .requestMatchers("/api/histories/**").authenticated()
         .requestMatchers("/api/messages/**").authenticated()
+        .requestMatchers("/api/admin/**").authenticated()
         .and()
         .oauth2ResourceServer().jwt();
 
