@@ -17,3 +17,14 @@ okta:
       client-id: ${CLIENT_ID}
       issuer: https://${OKTA_ISSUER}/oauth2/default
 
+
+
+# HTTPS Configuration
+server:
+    port: 8443
+    ssl:
+        enabled: true
+        key-alias: react-library-app
+        key-store: classpath:react-library-app-keystore.p12
+        key-store-password: secret
+        key-store-type: PKCS12
